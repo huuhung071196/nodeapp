@@ -7,5 +7,11 @@ pipeline {
 	echo 'Git Clone Success'            
       }        
     } 
+    stage('Build Docker Image') {         
+      steps{                
+	sh 'sudo docker build -t huuhung071196/nodeapp:$BUILD_NUMBER .'           
+        echo 'Build Image Completed'                
+      }           
+    }	  
   }  
 }
