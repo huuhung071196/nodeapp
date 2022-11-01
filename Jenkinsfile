@@ -8,15 +8,15 @@ pipeline {
            }
 	stage('connect docker hub') {
             steps {
-                withDockerRegistry(credentialsId: '03ed810a-e438-40b6-8af8-b60a79e142c0', url: 'https://index.docker.io/v1/')
+                withDockerRegistry(credentialsId: '03ed810a-e438-40b6-8af8-b60a79e142c0', url: 'https://hub.docker.com/')
             }
            }    
-        stage('Build') {
+        stage('Build image') {
             steps {
                 sh 'docker build -t huuhung071196/nodeapp .'
             }
            } 
-	stage('Push') {
+	stage('Push image') {
             steps {
 		sh 'docker push huuhung071196/nodeapp'
              }
