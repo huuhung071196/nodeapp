@@ -1,7 +1,7 @@
 FROM node:latest
 
 RUN apt-get update
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package*.json ./
 RUN npm install
