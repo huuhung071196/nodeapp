@@ -1,8 +1,5 @@
 pipeline {   
-  agent any
-  environment {     
-    DOCKERHUB_CREDENTIALS= credentials('dckr_pat_JFl_5KFZo20oBydg-QN85peT51E')     
-  }    
+  agent any  
   stages {         
     stage("Git Clone"){           
       steps{                
