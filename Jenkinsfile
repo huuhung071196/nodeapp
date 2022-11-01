@@ -21,11 +21,6 @@ pipeline {
 		sh 'docker push huuhung071196/nodeapp'
              }
 	   }
-	 post {
-		always {
-			sh 'docker logout'
-	     }
-           }   
 	 
     }
 }
