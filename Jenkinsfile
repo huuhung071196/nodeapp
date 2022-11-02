@@ -24,7 +24,7 @@ pipeline {
     }   
     stage('Push Image to Docker Hub') {         
       steps {                            
-	sh 'sudo docker push th/nodeapp:v1'                 
+	sh 'docker push th/nodeapp:v1'                 
         echo 'Push Image Completed'       
       }           
     }      
