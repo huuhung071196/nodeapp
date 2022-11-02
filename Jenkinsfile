@@ -12,7 +12,7 @@ pipeline {
     } 
     stage('Build Docker Image') {  
       steps {   
-	sh 'docker build -t th/nodeapp:v1 .'         
+	sh 'docker build -t huuhung071196/nodeapp:v1 .'         
         echo 'Build Image Completed'                
       }           
     }	  
@@ -24,7 +24,7 @@ pipeline {
     }   
     stage('Push Image to Docker Hub') {         
       steps {                            
-	sh 'docker push th/nodeapp:v1'                 
+	sh 'docker push huuhung071196/nodeapp:v1'                 
         echo 'Push Image Completed'       
       }           
     }      
