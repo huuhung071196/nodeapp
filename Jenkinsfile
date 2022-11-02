@@ -25,5 +25,6 @@ pipeline {
           sh 'docker push th/nodeapp:v1'
 	}
       }
+    }
   }  
 }
