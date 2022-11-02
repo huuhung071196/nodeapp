@@ -17,5 +17,13 @@ pipeline {
         echo 'Build Image Completed'                
       }           
     }	  
+    stage('Docker Push') {
+    	agent any
+      steps {
+      	withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh 'docker push th/nodeapp:v1'
+	}
+      }
   }  
 }
