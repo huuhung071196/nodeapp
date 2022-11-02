@@ -8,7 +8,8 @@ pipeline {
       }        
     } 
     stage('Build Docker Image') {         
-      steps {                
+      steps { 
+	sh 'cd /home/jenkins_home/workspace/build-docker'      
 	sh 'sudo docker build -t huuhung071196/nodeapp .'           
         echo 'Build Image Completed'                
       }           
