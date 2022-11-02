@@ -1,8 +1,7 @@
 pipeline {   
   agent any  
   environment {
-    registry = "huuhung071196/test"
-    registryCredential = 'dckr_pat_T0gVjuz4Zg0xRDZ4sZCrWQUgyEc'
+    DOCKERHUB_CREDENTIALS= credentials('dockerHub')
   }  
   stages {         
     stage('Git Clone') {           
@@ -17,13 +16,18 @@ pipeline {
         echo 'Build Image Completed'                
       }           
     }	  
-    stage('Docker Push') {
-    	agent any
-      steps {
-       swithDockerRegistry(credentialsId: 'dockerHub', url: 'https://registry-1.docker.io/v2/') {
-       sh 'docker push th/nodeapp:v1'
-              }
-      }
-    }
+    stage('Login to Docker Hub') {         
+      steps {                            
+	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                 
+	echo 'Login Completed'                
+      }           
+    }   
+    stage('Push Image to Docker Hub') {         
+      steps {                            
+	sh 'sudo docker push th/nodeapp:v1'                 
+        echo 'Push Image Completed'       
+      }           
+    }      
+  
   }  
 }
