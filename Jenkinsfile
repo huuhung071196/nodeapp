@@ -12,7 +12,6 @@ pipeline {
       }        
     } 
     stage('Build Docker Image') {  
-      agent any
       steps {   
 	sh 'sudo docker build -t th/nodeapp:v1 .'         
         echo 'Build Image Completed'                
