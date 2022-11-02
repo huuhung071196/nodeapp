@@ -26,7 +26,7 @@ pipeline {
       steps {                            
 	sh 'docker push huuhung071196/nodeapp:v1'                 
         echo 'Push Image Completed'
-	sh 'docker image rm nodeapp:v1'
+	sh 'docker image rm huuhung071196/nodeapp:v1'
       }    
     }      
   } //stages
