@@ -31,7 +31,6 @@ pipeline {
    stage('Cleanup') {         
       steps {                                           
 	sh 'docker image rm huuhung071196/nodeapp:v1'
-	sh 'docker image prune'
 	echo 'Removing docker images..'
       }    
     }      	  
