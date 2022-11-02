@@ -9,7 +9,7 @@ pipeline {
     } 
     stage('Build Docker Image') {         
       steps {   
-	sh 'docker build -t huuhung071196/nodeapp .'           
+	sh 'sudo docker build -t th/nodeapp .'           
         echo 'Build Image Completed'                
       }           
     }	  
