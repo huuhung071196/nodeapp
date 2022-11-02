@@ -26,9 +26,15 @@ pipeline {
       steps {                            
 	sh 'docker push huuhung071196/nodeapp:v1'                 
         echo 'Push Image Completed'
-	sh 'docker image rm huuhung071196/nodeapp:v1'
       }    
     }      
+   stage('Cleanup') {         
+      steps {                                           
+	sh 'docker image rm huuhung071196/nodeapp:v1'
+	sh 'docker ps -aq | xargs --no-run-if-empty docker rm'
+	echo 'Removing docker images..'
+      }    
+    }      	  
   } //stages
   post {
     always {  
