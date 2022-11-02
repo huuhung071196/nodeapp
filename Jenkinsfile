@@ -25,10 +25,9 @@ pipeline {
     stage('Push Image to Docker Hub') {         
       steps {                            
 	sh 'docker push huuhung071196/nodeapp:v1'                 
-        echo 'Push Image Completed'       
+        echo 'Push Image Completed'
+	sh 'docker image rm nodeapp:v1'
       }    
-	//clean disk local
-        sh 'docker image rm nodeapp:v1'
     }      
   } //stages
   post {
