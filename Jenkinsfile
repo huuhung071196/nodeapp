@@ -26,7 +26,9 @@ pipeline {
       steps {                            
 	sh 'docker push huuhung071196/nodeapp:v1'                 
         echo 'Push Image Completed'       
-      }           
+      }    
+	//clean disk local
+        sh 'docker image rm nodeapp:v1'
     }      
   } //stages
   post {
