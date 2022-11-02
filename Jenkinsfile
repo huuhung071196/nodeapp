@@ -20,12 +20,9 @@ pipeline {
     stage('Docker Push') {
     	agent any
       steps {
-       script {
-      	withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-	}
-          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh 'docker push th/nodeapp:v1'
-	}
+       swithDockerRegistry(credentialsId: 'dockerHub', url: 'https://registry-1.docker.io/v2/') {
+       sh 'docker push th/nodeapp:v1'
+              }
       }
     }
   }  
